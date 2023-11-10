@@ -1,0 +1,113 @@
+{
+  "name": "backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/backend",
+        "main": "apps/backend/src/main.ts",
+        "tsConfig": "apps/backend/tsconfig.app.json",
+        "assets": [
+          "apps/backend/src/assets"
+        ],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/backend/webpack.config.js",
+        "externalDependencies": [
+          "@nestjs/common",
+          "@nestjs/core",
+          "express",
+          "@nestjs/microservices",
+          "@nestjs/microservices/microservices-module",
+          "@nestjs/websockets",
+          "@nestjs/websockets/socket-module",
+          "cache-manager",
+          "@nestjs/swagger",
+          "@nestjs/terminus",
+          "swagger-stats",
+          "@nestjs/axios",
+          "domino",
+          "@nestjs/mongoose",
+          "mongoose"
+        ],
+        "optimization": false,
+        "tsPlugins": [
+          {
+            "name": "../node_modules/@nestjs/swagger/plugin.js",
+            "options": {
+              "classValidatorShim": true
+            }
+          }
+        ]
+      },
+      "configurations": {
+        "development": {
+          "sourceMap": true
+        },
+        "production": {
+          "sourceMap": false,
+          "optimization": true
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "backend:build:development"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "backend:build:development"
+        },
+        "production": {
+          "buildTarget": "backend:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/backend/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/backend/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-ssr": {
+      "executor": "@deltastone/nx-ng:build",
+      "options": {
+        "browserTarget": "frontend:build:development",
+        "ssrTarget": "frontend:ssr:development",
+        "serveTarget": "backend:serve:development"
+      }
+    }
+  },
+  "tags": []
+}

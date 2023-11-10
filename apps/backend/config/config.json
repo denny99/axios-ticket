@@ -1,0 +1,10 @@
+{
+  "example": "eyJzdWIiOiJhcGlVc2VyIiwibmFtZSI6IkFQSSBVc2VyIiwiaWF0IjoxNTE2MjM5MDIyfQ",
+  "server": {
+    "address": "http://localhost:4200",
+    "applicationName": "GiveMeAName"
+  },
+  "cluster": {
+    "microApplications": true
+  }
+}

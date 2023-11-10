@@ -1,0 +1,17 @@
+name: Release
+on:
+    push:
+        branches:
+            - main
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Release
+                uses: deltastone/build-and-release@v2.0.0
+                with:
+                    mode: 'Release'
+                    docker: false
+                    token: ${{ secrets.PAT }}
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

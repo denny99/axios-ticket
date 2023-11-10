@@ -1,42 +1,47 @@
 {
-  "root": true,
-  "ignorePatterns": ["**/*"],
+  "extends": "./linting/angular/.eslintrc.json",
   "plugins": ["@nx"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": [
+        "*.ts",
+        "*.js"
+      ],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
           {
             "enforceBuildableLibDependency": true,
-            "allow": [],
+            "allow": [
+            ],
             "depConstraints": [
               {
                 "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "onlyDependOnLibsWithTags": [
+                  "*"
+                ]
               }
             ]
           }
         ]
       }
     },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
-    },
-    {
-      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
-      "env": {
-        "jest": true
-      },
-      "rules": {}
-    }
+     {
+       "files": ["*.ts", "*.tsx"],
+       "extends": ["plugin:@nx/typescript", "./linting/angular/.eslintrc.json"],
+       "rules": {}
+     },
+     {
+       "files": ["*.js", "*.jsx"],
+       "extends": ["plugin:@nx/javascript", "./linting/angular/.eslintrc.json"],
+       "rules": {}
+     },
+     {
+       "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+       "env": {
+         "jest": true
+       },
+       "rules": {}
+     }
   ]
 }
