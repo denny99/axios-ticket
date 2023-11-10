@@ -9,6 +9,7 @@ import {join} from 'path';
 import {AppModule} from './app/app.module';
 import {setupDomino} from './app/ssr.polyfill';
 setupDomino(join(process.cwd(), 'dist/apps/frontend'));
+require('axios');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
