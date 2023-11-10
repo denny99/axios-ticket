@@ -22,23 +22,11 @@
         "assets": [
           "apps/frontend/src/favicon.ico",
           "apps/frontend/src/assets",
-{
-  "glob": "**/*",
-  "input": "node_modules/@deltastone/ngx-ds/assets",
-  "output": "assets"
-},
-{
-  "glob": "**/*",
-  "input": "node_modules/@deltastone/themes/deltastone/assets",
-  "output": "assets"
-}
         ],
         "styles": [
           "apps/frontend/src/styles.scss",
           "node_modules/primeicons/primeicons.css",
           "node_modules/primeng/resources/primeng.min.css",
-          "node_modules/@deltastone/themes/base/theme.css",
-          "node_modules/@deltastone/themes/deltastone/theme.css"
         ],
         "scripts": []
       },

@@ -99,14 +99,6 @@
           "codeCoverage": true
         }
       }
-    },
-    "serve-ssr": {
-      "executor": "@deltastone/nx-ng:build",
-      "options": {
-        "browserTarget": "frontend:build:development",
-        "ssrTarget": "frontend:ssr:development",
-        "serveTarget": "backend:serve:development"
-      }
     }
   },
   "tags": []

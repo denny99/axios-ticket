@@ -1,3 +1,0 @@
-[submodule "linting"]
-	path = linting
-	url = https://github.com/deltastone/codestyle.git

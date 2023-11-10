@@ -1,5 +1,4 @@
 import {Inject, Injectable, Optional} from '@angular/core';
-import {SessionService} from '@deltastone/ngx-ds/auth';
 import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {TranslateService} from '@ngx-translate/core';
 
@@ -17,7 +16,6 @@ export class SettingService {
           private configService: ConfigService,
           private primengConfig: PrimeNGConfig,
           private translateService: TranslateService,
-          @Optional() private sessionService: SessionService,
           @Optional() @Inject(REQUEST) private request?: Request) {
     this.translateService.setDefaultLang('en');
     // not required this is global
